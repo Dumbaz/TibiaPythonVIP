@@ -12,6 +12,6 @@ page=urllib2.urlopen(url)
 
 soup = BeautifulSoup(page.read())
 
-soup = soup.find_all("div", class_="InnerTableContainer")
+interesting = soup.find_all("div", class_="InnerTableContainer")
 
-print(soup)
+print(interesting)
