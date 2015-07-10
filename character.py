@@ -6,7 +6,7 @@ class Character(object):
 		super(Character, self).__init__()
 		self.name = [name]
 		self.vocation = vocation
-		self.level = [level]
+		self.level = [int(level)]
 		self.world = [world]
 		self.lastLogin = [lastlogin]
 		self.accStatus = [accStatus]
@@ -14,9 +14,9 @@ class Character(object):
 	def updateTime(self, newTime):
 		self.time.insert(0, newTime)
 	def updateName(self, newName):
-		self.name.insert(0, [newName, self.time[0])
+		self.name.insert(0, [newName, self.time[0]])
 	def updateLevel(self, newLevel):
-		self.level.insert(0, [newLevel, self.time[0]])
+		self.level.insert(0, [int(newLevel), self.time[0]])
 	def updateWorld(self, newWorld):
 		self.world.insert(0, [newWorld, self.time[0]])
 	def updateLastLogin(self, newLastLogin):
