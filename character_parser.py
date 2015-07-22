@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import re
+from json import dumps
 
 def parse_single_char(plain_html):
 	#Create BeautifulSoup Object
@@ -12,4 +13,16 @@ def parse_single_char(plain_html):
 		# general character information is in this table
 		# print table
 		tr_list = table.findAll('tr')
-		print tr_list[0].text
+		if tr_list[0].text == "Character Information":
+			char_information_table = table
+
+
+	char_dict = {}
+
+	for elem in char_information_table.findAll('tr'):
+		if elem.text != "Character Information":
+			a = elem.findAll('td')
+			char_dict[a[0].text[:-1]] = a[1].text
+
+	print char_dict['Name']
+	print char_dict['Level']
