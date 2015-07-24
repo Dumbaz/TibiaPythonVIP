@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 from json import dumps
-from time import strptime
+from datetime import datetime
 
 def replace_unicode(u_string):
     return u_string.encode('utf-8').replace("\xa0", " ").replace("\xc2", "")
@@ -32,5 +32,5 @@ def parse_single_char(plain_html):
                                 .replace(" ", "_")] = replace_unicode(a[1].text)
     char_dict['level'] = int(char_dict['level'])
     char_dict['achievement_points'] = int(char_dict['achievement_points'])
-    char_dict['last_login'] = strptime(char_dict['last_login'], '%b %d %Y, %H:%M:%S %Z')
+    char_dict['last_login'] = datetime.strptime(char_dict['last_login'], '%b %d %Y, %H:%M:%S %Z')
     return char_dict
